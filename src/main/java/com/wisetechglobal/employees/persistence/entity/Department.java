@@ -1,4 +1,4 @@
-package com.wisetechglobal.employees.entity;
+package com.wisetechglobal.employees.persistence.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

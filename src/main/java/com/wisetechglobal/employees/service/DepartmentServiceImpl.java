@@ -1,7 +1,7 @@
 package com.wisetechglobal.employees.service;
 
-import com.wisetechglobal.employees.entity.Department;
-import com.wisetechglobal.employees.repository.DepartmentRepository;
+import com.wisetechglobal.employees.persistence.entity.Department;
+import com.wisetechglobal.employees.persistence.repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Objects;
@@ -26,9 +26,9 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public Department updateDepartment(Department department, Integer departmentId) {
+    public Department updateDepartment(Department department, Integer id) {
 
-        Department departmentDb = departmentRepository.findById(departmentId).get();
+        Department departmentDb = departmentRepository.findById(id).get();
 
         if (Objects.nonNull(department.getName())
                 && !"".equalsIgnoreCase(

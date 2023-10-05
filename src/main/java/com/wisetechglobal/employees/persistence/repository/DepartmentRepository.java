@@ -1,6 +1,6 @@
-package com.wisetechglobal.employees.repository;
+package com.wisetechglobal.employees.persistence.repository;
 
-import com.wisetechglobal.employees.entity.Department;
+import com.wisetechglobal.employees.persistence.entity.Department;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,6 +1,6 @@
 package com.wisetechglobal.employees.controller;
 
-import com.wisetechglobal.employees.entity.Department;
+import com.wisetechglobal.employees.persistence.entity.Department;
 import com.wisetechglobal.employees.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
