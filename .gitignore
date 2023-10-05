@@ -100,3 +100,8 @@ modules.xml
 
 # Sonarlint plugin
 .idea/sonarlint
+/.idea/
+/.mvn/
+/target/
+/mvnw
+/mvnw.cmd
