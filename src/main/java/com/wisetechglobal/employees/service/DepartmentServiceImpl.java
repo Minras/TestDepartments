@@ -9,7 +9,6 @@ import java.util.Objects;
 import java.util.List;
 
 @Service
-// Class implementing DepartmentService class
 public class DepartmentServiceImpl implements DepartmentService {
 
     @Autowired
@@ -31,8 +30,7 @@ public class DepartmentServiceImpl implements DepartmentService {
         Department departmentDb = departmentRepository.findById(id).get();
 
         if (Objects.nonNull(department.getName())
-                && !"".equalsIgnoreCase(
-                department.getName())) {
+                && !"".equals(department.getName())) {
             departmentDb.setName(department.getName());
         }
 
