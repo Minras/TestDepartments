@@ -9,26 +9,27 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-public class DepartmentController {
+@RequestMapping("/api/v1/departments")
+public class DepartmentControllerV1 {
     @Autowired
     private DepartmentService departmentService;
 
-    @PostMapping("/departments")
-    public Department saveDepartment(@Valid @RequestBody Department department) {
+    @PostMapping("/")
+    public Department saveDepartment(@RequestBody Department department) {
         return departmentService.saveDepartment(department);
     }
 
-    @GetMapping("/departments")
+    @GetMapping("/")
     public List<Department> fetchDepartmentList() {
         return departmentService.fetchDepartmentList();
     }
 
-    @PutMapping("/departments/{id}")
+    @PutMapping("/{id}")
     public Department updateDepartment(@RequestBody Department department, @PathVariable("id") Integer id) {
         return departmentService.updateDepartment(department, id);
     }
 
-    @DeleteMapping("/departments/{id}")
+    @DeleteMapping("/{id}")
     public String deleteDepartmentById(@PathVariable("id") Integer id) {
         departmentService.deleteDepartmentById(id);
         return "Deleted Successfully";
