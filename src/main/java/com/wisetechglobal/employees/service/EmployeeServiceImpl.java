@@ -16,12 +16,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee saveEmployee(Employee employee) {
-        return EmployeeRepository.save(employee);
+        return employeeRepository.save(employee);
     }
 
     @Override
     public List<Employee> fetchEmployeeList() {
-        return (List<Employee>) employeeRepository.findAll();
+        return employeeRepository.findAll();
     }
 
     @Override
@@ -30,11 +30,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee employeeDb = employeeRepository.findById(id).get();
 
         if (Objects.nonNull(employee.getFirstname())
-                && !"".equals(employee.getFirstname())) {
+                && !employee.getFirstname().isEmpty()) {
             employeeDb.setFirstname(employee.getFirstname());
         }
         if (Objects.nonNull(employee.getLastname())
-                && !"".equals(employee.getLastname())) {
+                && !employee.getLastname().isEmpty()) {
             employeeDb.setLastname(employee.getLastname());
         }
 
