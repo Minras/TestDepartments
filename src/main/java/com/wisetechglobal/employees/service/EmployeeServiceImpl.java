@@ -5,12 +5,16 @@ import com.wisetechglobal.employees.persistence.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.Objects;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
+
+    private final String MSG_TPL_ENTITY_DOESNT_EXIST = "Employee with id=%d doesn't exist";
 
     private final EmployeeRepository employeeRepository;
 
@@ -32,7 +36,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Employee updateEmployee(final Employee employee, Integer id) {
 
-        Employee employeeDb = employeeRepository.findById(id).get();
+        Optional<Employee> result = employeeRepository.findById(id);
+        if (result.isEmpty()) {
+            throw new EntityNotFoundException(String.format(MSG_TPL_ENTITY_DOESNT_EXIST, id));
+        }
+        Employee employeeDb = result.get();
         if (Objects.nonNull(employee.getFirstname())) {
             employeeDb.setFirstname(employee.getFirstname());
         }
@@ -44,6 +52,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void deleteEmployeeById(Integer id) {
+        Optional<Employee> result = employeeRepository.findById(id);
+        if (result.isEmpty()) {
+            throw new EntityNotFoundException(String.format(MSG_TPL_ENTITY_DOESNT_EXIST, id));
+        }
         employeeRepository.deleteById(id);
     }
 }
