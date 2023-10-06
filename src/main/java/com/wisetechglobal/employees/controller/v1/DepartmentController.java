@@ -1,4 +1,4 @@
-package com.wisetechglobal.employees.controller;
+package com.wisetechglobal.employees.controller.v1;
 
 import com.wisetechglobal.employees.persistence.entity.Department;
 import com.wisetechglobal.employees.service.DepartmentService;
@@ -10,7 +10,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/api/v1/departments")
-public class DepartmentControllerV1 {
+public class DepartmentController {
     @Autowired
     private DepartmentService departmentService;
 
