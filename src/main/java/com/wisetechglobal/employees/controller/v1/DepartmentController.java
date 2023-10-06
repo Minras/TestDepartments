@@ -3,23 +3,22 @@ package com.wisetechglobal.employees.controller.v1;
 import com.wisetechglobal.employees.persistence.entity.Department;
 import com.wisetechglobal.employees.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/api/v1/departments")
 public class DepartmentController {
     @Autowired
     private DepartmentService departmentService;
 
-    @PostMapping("/")
+    @PostMapping
     public Department saveDepartment(@RequestBody Department department) {
         return departmentService.saveDepartment(department);
     }
 
-    @GetMapping("/")
+    @GetMapping
     public List<Department> fetchDepartmentList() {
         return departmentService.fetchDepartmentList();
     }
@@ -30,8 +29,7 @@ public class DepartmentController {
     }
 
     @DeleteMapping("/{id}")
-    public String deleteDepartmentById(@PathVariable("id") Integer id) {
+    public void deleteDepartmentById(@PathVariable("id") Integer id) {
         departmentService.deleteDepartmentById(id);
-        return "Deleted Successfully";
     }
 }
