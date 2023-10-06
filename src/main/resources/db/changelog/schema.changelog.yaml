@@ -21,9 +21,13 @@ databaseChangeLog:
               - column:
                   name: firstname
                   type: VARCHAR(32)
+                  constraints:
+                    nullable: false
               - column:
                   name: lastname
                   type: VARCHAR(64)
+                  constraints:
+                    nullable: false
   - changeSet:
       id: create_table_departments
       author: andrii.shchurkov
@@ -46,14 +50,20 @@ databaseChangeLog:
               - column:
                   name: name
                   type: VARCHAR(64)
+                  constraints:
+                    nullable: false
               - column:
                   name: read_only
                   type: boolean
                   defaultValueBoolean: false
+                  constraints:
+                    nullable: false
               - column:
                   name: required_for_all
                   type: boolean
                   defaultValueBoolean: false
+                  constraints:
+                    nullable: false
   - changeSet:
       id: create_table_employee_departments
       author: andrii.shchurkov
