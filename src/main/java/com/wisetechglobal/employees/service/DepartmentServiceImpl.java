@@ -11,15 +11,15 @@ import java.util.Objects;
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
 
-    private DepartmentRepository departmentRepository;
+    private final DepartmentRepository departmentRepository;
 
     @Autowired
-    public DepartmentServiceImpl(DepartmentRepository departmentRepository) {
+    public DepartmentServiceImpl(final DepartmentRepository departmentRepository) {
         this.departmentRepository = departmentRepository;
     }
 
     @Override
-    public Department saveDepartment(Department department) {
+    public Department saveDepartment(final Department department) {
         return departmentRepository.save(department);
     }
 
@@ -29,15 +29,12 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public Department updateDepartment(Department department, Integer id) {
+    public Department updateDepartment(final Department department, final Integer id) {
 
         Department departmentDb = departmentRepository.findById(id).get();
-
-        if (Objects.nonNull(department.getName())
-                && !department.getName().isEmpty()) {
+        if (Objects.nonNull(department.getName())) {
             departmentDb.setName(department.getName());
         }
-
         return departmentRepository.save(departmentDb);
     }
 

@@ -4,6 +4,7 @@ import com.wisetechglobal.employees.persistence.entity.Employee;
 import com.wisetechglobal.employees.persistence.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.Objects;
 
 import java.util.List;
@@ -11,15 +12,15 @@ import java.util.List;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
-    private EmployeeRepository employeeRepository;
+    private final EmployeeRepository employeeRepository;
 
     @Autowired
-    public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
+    public EmployeeServiceImpl(final EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
     }
 
     @Override
-    public Employee saveEmployee(Employee employee) {
+    public Employee saveEmployee(final Employee employee) {
         return employeeRepository.save(employee);
     }
 
@@ -29,19 +30,15 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee updateEmployee(Employee employee, Integer id) {
+    public Employee updateEmployee(final Employee employee, Integer id) {
 
         Employee employeeDb = employeeRepository.findById(id).get();
-
-        if (Objects.nonNull(employee.getFirstname())
-                && !employee.getFirstname().isEmpty()) {
+        if (Objects.nonNull(employee.getFirstname())) {
             employeeDb.setFirstname(employee.getFirstname());
         }
-        if (Objects.nonNull(employee.getLastname())
-                && !employee.getLastname().isEmpty()) {
+        if (Objects.nonNull(employee.getLastname())) {
             employeeDb.setLastname(employee.getLastname());
         }
-
         return employeeRepository.save(employeeDb);
     }
 
