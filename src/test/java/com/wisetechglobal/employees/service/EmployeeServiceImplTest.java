@@ -36,6 +36,7 @@ class EmployeeServiceImplTest {
 
         Employee employeeDb = employeeService.saveEmployee(employee);
         assertThat(employeeDb.getFirstname()).isSameAs(employee.getFirstname());
+        assertThat(employeeDb.getLastname()).isSameAs(employee.getLastname());
         verify(employeeRepository).save(employee);
     }
 
