@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Data
@@ -17,5 +17,6 @@ public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
+    @Column(nullable = false)
     private String name;
 }

@@ -2,26 +2,21 @@ package com.wisetechglobal.employees.service;
 
 import com.wisetechglobal.employees.persistence.entity.Employee;
 import com.wisetechglobal.employees.persistence.repository.EmployeeRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.persistence.EntityNotFoundException;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityNotFoundException;
-import java.util.Objects;
-
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService {
 
     private final String MSG_TPL_ENTITY_DOESNT_EXIST = "Employee with id=%d doesn't exist";
 
-    private final EmployeeRepository employeeRepository;
-
-    @Autowired
-    public EmployeeServiceImpl(final EmployeeRepository employeeRepository) {
-        this.employeeRepository = employeeRepository;
-    }
+    private EmployeeRepository employeeRepository;
 
     @Override
     public Employee saveEmployee(final Employee employee) {

@@ -1,12 +1,10 @@
 package com.wisetechglobal.employees.persistence.entity;
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
-
 
 @Entity
 @Data
@@ -18,6 +16,8 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
+    @Column(nullable = false)
     private String firstname;
+    @Column(nullable = false)
     private String lastname;
 }

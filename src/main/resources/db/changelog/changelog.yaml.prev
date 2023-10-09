@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - include:
+      file: schema.changelog.yaml
+  - include:
+      file: data.changelog.yaml

@@ -2,25 +2,21 @@ package com.wisetechglobal.employees.service;
 
 import com.wisetechglobal.employees.persistence.entity.Department;
 import com.wisetechglobal.employees.persistence.repository.DepartmentRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.persistence.EntityNotFoundException;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class DepartmentServiceImpl implements DepartmentService {
 
     private final String MSG_TPL_ENTITY_DOESNT_EXIST = "Department with id=%d doesn't exist";
 
-    private final DepartmentRepository departmentRepository;
-
-    @Autowired
-    public DepartmentServiceImpl(final DepartmentRepository departmentRepository) {
-        this.departmentRepository = departmentRepository;
-    }
+    private DepartmentRepository departmentRepository;
 
     @Override
     public Department saveDepartment(final Department department) {
